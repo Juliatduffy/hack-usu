@@ -29,9 +29,6 @@ layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_xkndl")
-scroll_speed_px_per_sec = null
-points_per_second = null
-elevation_per_second = null
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=65427438]
 layout_mode = 1
