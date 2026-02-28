@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cnc1tw67gh6s3"]
+[gd_scene format=3 uid="uid://bvk3gnpxothx"]
 
 [ext_resource type="Texture2D" uid="uid://ds26ttb51epfn" path="res://assets/goat.png" id="1_4flbx"]
 
@@ -66,6 +66,7 @@ frame = 5
 frame_progress = 0.35436174
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=624635164]
+z_index = 2
 position = Vector2(214, -23.999998)
 scale = Vector2(3.8333335, 3.8500001)
 shape = SubResource("CircleShape2D_b26j0")
