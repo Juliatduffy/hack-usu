@@ -10,11 +10,21 @@
 [ext_resource type="Script" uid="uid://cxf1618ho4vex" path="res://player.gd" id="5_r0x5m"]
 [ext_resource type="PackedScene" uid="uid://brn0tsp4uvxqs" path="res://world_bound.tscn" id="5_t88pq"]
 [ext_resource type="Texture2D" uid="uid://cigbovtxus6mp" path="res://ground.png" id="7_yx171"]
-[ext_resource type="Texture2D" uid="uid://bqtpnkappgmp4" path="res://back_mtns.png" id="8_yhmtn"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yx171"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uckp"]
 shader = ExtResource("4_2vekm")
-shader_parameter/scroll_speed = 0.05
+shader_parameter/scroll_speed = 0.15
+
+[sub_resource type="GDScript" id="GDScript_1tm76"]
+script/source = "extends TextureRect
+
+func _ready() -> void:
+	pass
+	
+func _process(delta:float) -> void:
+	pass
+	
+"
 
 [node name="Game" type="Control" unique_id=886851171]
 layout_mode = 3
@@ -75,10 +85,10 @@ offset_right = 551.0
 offset_bottom = 260.0
 
 [node name="TextureRect" parent="mtn_side_control" index="0" unique_id=693379726]
-z_index = 2
-offset_left = -1624.0
+z_index = 1
+offset_left = -1623.9999
 offset_top = 32.000015
-offset_right = -660.3489
+offset_right = -660.34875
 offset_bottom = 879.292
 scale = Vector2(3, 3)
 texture = ExtResource("4_yx171")
@@ -97,10 +107,9 @@ rotation = -0.3678357
 texture = ExtResource("4_3mrqo")
 
 [node name="TextureRect2" type="TextureRect" parent="mtn_side_control" unique_id=2133316199]
-z_index = 1
 texture_filter = 1
 texture_repeat = 2
-material = SubResource("ShaderMaterial_yx171")
+material = SubResource("ShaderMaterial_7uckp")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,26 +125,7 @@ scale = Vector2(3.6480424, 3.8931859)
 texture = ExtResource("7_yx171")
 expand_mode = 2
 stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="mtn_side_control" unique_id=1662758057]
-texture_filter = 1
-texture_repeat = 2
-material = SubResource("ShaderMaterial_yx171")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2614.0
-offset_top = -564.0
-offset_right = -1637.06
-offset_bottom = 253.23096
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.098481044
-scale = Vector2(3.6480424, 3.8931859)
-texture = ExtResource("8_yhmtn")
-expand_mode = 2
-stretch_mode = 5
+script = SubResource("GDScript_1tm76")
 
 [node name="CharacterBody2D" parent="." unique_id=463096412 instance=ExtResource("4_sb48q")]
 z_index = 2
