@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c42nsax6fksbm"]
 
-[ext_resource type="Texture2D" uid="uid://n45w4smx7658" path="res://assets/back.png" id="1_wbfu4"]
 [ext_resource type="Script" uid="uid://bsnxetqls4pgg" path="res://game.gd" id="1_xkndl"]
+[ext_resource type="Texture2D" uid="uid://dqcwohjetu5vb" path="res://assets/final_sky.webp" id="2_xkndl"]
 
 [node name="Game" type="Control" unique_id=886851171]
 layout_mode = 3
@@ -39,12 +39,15 @@ text = "End Game
 "
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2061979452]
+texture_filter = 1
+texture_repeat = 2
 layout_mode = 0
-offset_left = -10.0
-offset_top = -8.0
-offset_right = 1416.0
-offset_bottom = 920.0
+offset_left = -49.0
+offset_top = -4227.0
+offset_right = 1487.0
+offset_bottom = 929.0
 mouse_filter = 2
-texture = ExtResource("1_wbfu4")
+texture = ExtResource("2_xkndl")
+expand_mode = 4
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]

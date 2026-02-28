@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2xcs1y3rx5m3"
-path="res://.godot/imported/BackgroundLoopSun.png-f6a669ebaecabb608037cdf3b0ecfbaa.ctex"
+uid="uid://dqcwohjetu5vb"
+path="res://.godot/imported/final_sky.webp-e629d3a8a3366c8ee65e1a7c5343935a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BackgroundLoopSun.png"
-dest_files=["res://.godot/imported/BackgroundLoopSun.png-f6a669ebaecabb608037cdf3b0ecfbaa.ctex"]
+source_file="res://assets/final_sky.webp"
+dest_files=["res://.godot/imported/final_sky.webp-e629d3a8a3366c8ee65e1a7c5343935a.ctex"]
 
 [params]
 
