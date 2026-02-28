@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cnc1tw67gh6s3"]
+
+[ext_resource type="Texture2D" uid="uid://ds26ttb51epfn" path="res://assets/goat.png" id="1_4flbx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(180, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(240, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(300, 0, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3pqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hs0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxqw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b26j0"]
+radius = 20.354454
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=463096412]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=933329380]
+position = Vector2(221, -22)
+scale = Vector2(4.55, 4.2)
+sprite_frames = SubResource("SpriteFrames_dw050")
+autoplay = "default"
+frame = 5
+frame_progress = 0.35436174
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=624635164]
+position = Vector2(214, -23.999998)
+scale = Vector2(3.8333335, 3.8500001)
+shape = SubResource("CircleShape2D_b26j0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2142942405]

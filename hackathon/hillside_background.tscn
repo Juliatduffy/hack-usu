@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://csl6mjwyfpbvr"]
+
+[ext_resource type="Shader" uid="uid://by3gl0s4fbgm1" path="res://hillside_shader.gdshader" id="1_iwrp8"]
+[ext_resource type="Texture2D" uid="uid://c2umf6ep1jn3b" path="res://green_hillside_ribbon.png" id="2_gwq2l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uckp"]
+shader = ExtResource("1_iwrp8")
+
+[sub_resource type="GDScript" id="GDScript_1tm76"]
+script/source = "extends TextureRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="mtn_side_control" type="Control" unique_id=1368323391]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=693379726]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_7uckp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = 402.0
+offset_right = -39.0
+offset_bottom = 402.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.3926991
+texture = ExtResource("2_gwq2l")
+stretch_mode = 1
+script = SubResource("GDScript_1tm76")
