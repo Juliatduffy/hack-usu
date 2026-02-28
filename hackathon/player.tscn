@@ -323,7 +323,7 @@ height = 12.468113
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=933329380]
 position = Vector2(221, -22)
-scale = Vector2(4.55, 4.2)
+scale = Vector2(2.167, 2)
 sprite_frames = SubResource("SpriteFrames_dw050")
 animation = &"duck_l"
 autoplay = "walk_r"
@@ -331,7 +331,7 @@ autoplay = "walk_r"
 [node name="normal" type="CollisionShape2D" parent="." unique_id=624635164]
 z_index = 2
 position = Vector2(222, -26)
-scale = Vector2(3.8333335, 3.8500001)
+scale = Vector2(1.991, 2)
 shape = SubResource("CircleShape2D_b26j0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2142942405]
@@ -342,6 +342,6 @@ zoom = Vector2(0.7, 0.7)
 z_index = 2
 position = Vector2(228, 7.999998)
 rotation = 1.5551564
-scale = Vector2(14.758319, 14.75835)
+scale = Vector2(5, 5)
 skew = -0.00013637543
 shape = SubResource("CapsuleShape2D_i3pqv")
