@@ -40,4 +40,5 @@ func _ready() -> void:
 func explode() -> void:
 	freeze = true
 	sprite.play("explode")
+	$Explode.play()
 	sprite.animation_finished.connect(queue_free, CONNECT_ONE_SHOT)
