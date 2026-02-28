@@ -1,89 +1,116 @@
 extends Control
 
-# Movement (pixels/sec)
-@export var speed_left: float = 100.0
-@export var speed_down: float = 30.0
+# Tile size
+@export var tile_w: float = 200.0
+@export var tile_h: float = 400.0
 
-# Step geometry
-@export var tile_size: Vector2 = Vector2(100, 30)
-@export var step_spacing: Vector2 = Vector2(100, 30) # right 100, up 30 (negative y)
+# WAY slower (bigger = slower)
+@export var step_interval: float = 1.2
 
-# How many steps you have (you said 15)
-@export var step_count: int = 15
+# Vertical behavior
+@export var base_drop_per_step: float = 20.0
+@export var jagged_max: float = 120.0
 
-# Where the staircase "starts" (bottom-left-ish)
+# Max allowed height change between consecutive tiles
+@export var max_jump_height_diff: float = 200.0
+
+# Playable vertical band (smaller y = higher on screen)
+@export var y_min: float = 200.0
+@export var y_max: float = 900.0
+
 @export var start_pos: Vector2 = Vector2(0, 870)
-
-# Offscreen padding
-@export var pad: float = 20.0
+@export var step_count: int = 9
 
 var _steps: Array[Control] = []
-var _d: Vector2 # direction from one step to the next (up-right)
+var _t_accum: float = 0.0
 
 func _ready() -> void:
-	_d = Vector2(step_spacing.x, -step_spacing.y) # up-right in Godot coords
-
+	randomize()
 	_collect_steps()
-	_size_steps()
-	_layout_initial()
+	_force_sizes()
+	_initial_layout()
 
 func _process(delta: float) -> void:
-	var screen := get_viewport_rect().size
-	var move := Vector2(-speed_left, speed_down) * delta
-
-	# Move all steps
-	for s in _steps:
-		s.global_position += move
-
-	# Wrap any step that left the screen
-	for s in _steps:
-		if _is_offscreen(s, screen):
-			var front := _frontmost_step()
-			s.global_position = front.global_position + _d
+	_t_accum += delta
+	while _t_accum >= step_interval:
+		_t_accum -= step_interval
+		_advance_one_step()
 
 func _collect_steps() -> void:
 	_steps.clear()
 
-	# Prefer s1..s15 if they exist (your setup)
 	for i in range(1, step_count + 1):
 		var n := get_node_or_null("s%d" % i)
 		if n != null and n is Control:
 			_steps.append(n)
 
-	# Fallback: if naming isn't perfect, just grab children
+	# Fallback: grab children if naming isn't perfect
 	if _steps.size() == 0:
 		for c in get_children():
 			if c is Control:
 				_steps.append(c)
 
-func _size_steps() -> void:
+func _force_sizes() -> void:
 	for s in _steps:
-		s.custom_minimum_size = tile_size
-		s.size = tile_size
+		s.custom_minimum_size = Vector2(tile_w, tile_h)
+		s.size = Vector2(tile_w, tile_h)
 
-func _layout_initial() -> void:
-	# Make a clean staircase: bottom-left -> up-right
-	# s1 at start_pos, s2 one step up-right, etc.
-	# Uses GLOBAL positions so Control layout doesn’t fight you.
+func _initial_layout() -> void:
+	var x := start_pos.x
+	var y := _bounce_y(start_pos.y)
+
 	for i in range(_steps.size()):
-		_steps[i].global_position = start_pos + _d * float(i)
+		_steps[i].global_position = Vector2(x, y)
+		x += tile_w
 
-func _is_offscreen(s: Control, screen: Vector2) -> bool:
-	var p := s.global_position
-	var off_left := (p.x + tile_size.x) < -pad
-	var off_bottom := p.y > screen.y + pad
-	return off_left or off_bottom
+func _advance_one_step() -> void:
+	# Move left by exactly one tile width per tick
+	for s in _steps:
+		s.global_position.x -= tile_w
 
-func _frontmost_step() -> Control:
-	# "Front" means furthest along the up-right diagonal direction _d.
-	# We use a dot product projection to find that.
+	# Wrap tiles that exited left
+	var left_edge := -tile_w
+	for s in _steps:
+		if s.global_position.x < left_edge:
+			_respawn_at_right_end(s)
+
+func _respawn_at_right_end(s: Control) -> void:
+	var rightmost := _rightmost_step()
+	var new_x := rightmost.global_position.x + tile_w
+
+	# Propose a vertical change and strictly limit it to max_jump_height_diff
+	var proposed_delta := base_drop_per_step + randf_range(-jagged_max, jagged_max)
+	var clamped_delta = clamp(proposed_delta, -max_jump_height_diff, max_jump_height_diff)
+
+	# Bounce into [y_min, y_max] so tiles don't get stuck at the bottom
+	var new_y := _bounce_y(rightmost.global_position.y + clamped_delta)
+
+	s.global_position = Vector2(new_x, new_y)
+
+func _rightmost_step() -> Control:
 	var best := _steps[0]
-	var best_t := best.global_position.dot(_d)
+	var best_x := best.global_position.x
 
 	for i in range(1, _steps.size()):
-		var t := _steps[i].global_position.dot(_d)
-		if t > best_t:
-			best_t = t
+		var x := _steps[i].global_position.x
+		if x > best_x:
+			best_x = x
 			best = _steps[i]
 
 	return best
+
+func _bounce_y(y: float) -> float:
+	# Reflect (bounce) y into [y_min, y_max] instead of clamping or wrapping.
+	# This prevents tiles from piling up at y_max and keeps motion varied.
+	var span := y_max - y_min
+	if span <= 0.0:
+		return y_min
+
+	var t := y - y_min
+	var period := 2.0 * span
+	t = fposmod(t, period)
+
+	if t > span:
+		t = period - t  # reflect back
+
+	return y_min + t
