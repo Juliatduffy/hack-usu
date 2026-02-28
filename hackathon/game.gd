@@ -56,6 +56,14 @@ func _process(delta: float) -> void:
 	points = int(elapsed_time * points_per_second)
 	elevation = elapsed_time * elevation_per_second
 
+	if get_node("CharacterBody2D/normal").global_position.x < get_node("left_wall_test").global_position.x:
+		get_tree().change_scene_to_file("res://End.tscn")
+		
+	if get_node("CharacterBody2D/Camera2D").limit_left < get_node("left_wall_test").global_position.x:
+		get_node("CharacterBody2D/Camera2D").limit_left = int(get_node("left_wall_test").global_position.x)
+		
+	if get_node("CharacterBody2D/Camera2D").limit_bottom < get_node("floor").global_position.y + 1000:
+		get_node("CharacterBody2D/Camera2D").limit_bottom = int(get_node("floor").global_position.y)
 	_update_ui()
 
 func _update_ui() -> void:
