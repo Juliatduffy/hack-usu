@@ -6,7 +6,7 @@ extends Node2D
 @export var tile_w: float = 100.0
 @export var tile_h: float = 500.0 
 
-@export var same_height_chance: float = 0.15
+@export var same_height_chance: float = 0.30
 @export var height_step: float = 50.0
 
 # -------------------------

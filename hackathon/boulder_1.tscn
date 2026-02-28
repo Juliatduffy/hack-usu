@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://hbrt0xbo61n0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_84fkb"]
+friction = 0.74
+bounce = 0.72
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_84fkb"]
+radius = 97.00516
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wiki5"]
+radius = 97.020615
+
+[node name="boulder_1" type="RigidBody2D" unique_id=1264595469]
+physics_material_override = SubResource("PhysicsMaterial_84fkb")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1753639508]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=547035863]
+light_mask = 4
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_84fkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=211544138]
+shape = SubResource("CircleShape2D_wiki5")
