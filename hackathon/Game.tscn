@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://cxf1618ho4vex" path="res://player.gd" id="5_r0x5m"]
 [ext_resource type="PackedScene" uid="uid://brn0tsp4uvxqs" path="res://world_bound.tscn" id="5_t88pq"]
 [ext_resource type="Texture2D" uid="uid://c2umf6ep1jn3b" path="res://green_hillside_ribbon.png" id="5_yx171"]
+[ext_resource type="PackedScene" uid="uid://bfg7jry2dlten" path="res://boulder_1.tscn" id="10_yx171"]
+[ext_resource type="Script" uid="uid://gapthoixe127" path="res://boulder_1.gd" id="11_yhmtn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7uckp"]
 shader = ExtResource("4_2vekm")
@@ -27,6 +29,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 "
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vekm"]
+radius = 2.0
 
 [node name="Game" type="Control" unique_id=886851171]
 layout_mode = 3
@@ -126,19 +131,24 @@ texture = ExtResource("4_3mrqo")
 
 [node name="CharacterBody2D" parent="." unique_id=463096412 instance=ExtResource("4_sb48q")]
 position = Vector2(533, 715)
+wall_min_slide_angle = 0.012217305
 script = ExtResource("5_r0x5m")
 
 [node name="floor" parent="." unique_id=393008036 instance=ExtResource("5_t88pq")]
 position = Vector2(1248.9999, 695)
 rotation = -0.3926991
 
-[node name="left_wall" parent="." unique_id=1507079395 instance=ExtResource("5_t88pq")]
-position = Vector2(-3, 676)
-rotation = 1.5707964
-
 [node name="right_wall" parent="." unique_id=1281283488 instance=ExtResource("5_t88pq")]
 position = Vector2(1453, 173)
 rotation = 4.712389
+
+[node name="left_wall_test" type="CollisionShape2D" parent="." unique_id=1331281314]
+position = Vector2(-3, 676)
+shape = SubResource("CircleShape2D_2vekm")
+
+[node name="boulder_1" parent="." unique_id=1838656237 instance=ExtResource("10_yx171")]
+position = Vector2(1145, 82)
+script = ExtResource("11_yhmtn")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
 
