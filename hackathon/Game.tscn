@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bsnxetqls4pgg" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="Texture2D" uid="uid://dqcwohjetu5vb" path="res://assets/final_sky.webp" id="2_xkndl"]
 [ext_resource type="Script" uid="uid://vi717v7277gc" path="res://stairs.gd" id="3_sb48q"]
+[ext_resource type="Script" uid="uid://b7ugn6tkbed0q" path="res://texture_rect.gd" id="3_t88pq"]
 [ext_resource type="Texture2D" uid="uid://di4wr7b156bhr" path="res://assets/snowy_block.png" id="4_sb48q"]
 
 [node name="Game" type="Control" unique_id=886851171]
@@ -39,18 +40,6 @@ theme_override_font_sizes/font_size = 41
 text = "End Game
 
 "
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2061979452]
-texture_filter = 1
-texture_repeat = 2
-layout_mode = 0
-offset_left = -30.0
-offset_top = -3770.0
-offset_right = 1453.0
-offset_bottom = 907.0
-mouse_filter = 2
-texture = ExtResource("2_xkndl")
-expand_mode = 4
 
 [node name="Stairs" type="Control" parent="." unique_id=508811183]
 anchors_preset = 0
@@ -206,5 +195,23 @@ offset_right = 800.0
 offset_bottom = 720.0
 texture = ExtResource("4_sb48q")
 expand_mode = 1
+
+[node name="Background" type="Control" parent="." unique_id=1157887488]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_t88pq")
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=2061979452]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 0
+offset_left = -30.0
+offset_top = -3770.0
+offset_right = 1453.0
+offset_bottom = 907.0
+mouse_filter = 2
+texture = ExtResource("2_xkndl")
+expand_mode = 4
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
