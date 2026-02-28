@@ -1,14 +1,23 @@
 extends Control
 
-@export var scroll_speed_px_per_sec: float = 5.0  
+@export var scroll_speed_px_per_sec: float = 5.0
+
+# Time-based scoring
+@export var points_per_second: float = 10.0
+@export var elevation_per_second: float = 2.5  # units per second (meters, feet, whatever)
 
 @onready var bg: TextureRect = $TextureRect
+@onready var elevation_label: Label = $CanvasLayer/Control/Label
 
-var _uv_offset_y: float = 0.0
-var _uv_speed: float = 0.0
+var _uv_offset_y := 0.0
+var _uv_speed := 0.0
+
+var elapsed_time := 0.0
+var points := 0
+var elevation := 0.0
 
 func _ready() -> void:
-	bg.z_index = -1  # keep it behind UI
+	bg.z_index = -1
 
 	if bg.texture == null:
 		push_error("TextureRect has no texture.")
@@ -26,7 +35,7 @@ uniform float y_offset = 0.0;
 
 void fragment() {
 	vec2 uv = UV;
-	uv.y = fract(uv.y - y_offset); // NEGATIVE makes it move DOWN
+	uv.y = fract(uv.y - y_offset);
 	COLOR = texture(TEXTURE, uv);
 }
 """
@@ -34,13 +43,19 @@ void fragment() {
 	mat.shader = shader
 	bg.material = mat
 
-func _process(delta: float) -> void:
-	if bg.material == null:
-		return
+	_update_ui()
 
-	_uv_offset_y = fmod(_uv_offset_y + _uv_speed * delta, 1.0)
-	(bg.material as ShaderMaterial).set_shader_parameter("y_offset", _uv_offset_y)
-	
+func _process(delta: float) -> void:
+	# background scroll
+	if bg.material != null:
+		_uv_offset_y = fmod(_uv_offset_y + _uv_speed * delta, 1.0)
+		(bg.material as ShaderMaterial).set_shader_parameter("y_offset", _uv_offset_y)
+
+	# time -> points/elevation
+	elapsed_time += delta
+	points = int(elapsed_time * points_per_second)
+	elevation = elapsed_time * elevation_per_second
+
 	if get_node("CharacterBody2D/normal").global_position.x < get_node("left_wall_test").global_position.x:
 		get_tree().change_scene_to_file("res://End.tscn")
 		
@@ -49,6 +64,8 @@ func _process(delta: float) -> void:
 		
 	if get_node("CharacterBody2D/Camera2D").limit_bottom < get_node("floor").global_position.y + 1000:
 		get_node("CharacterBody2D/Camera2D").limit_bottom = int(get_node("floor").global_position.y)
+	_update_ui()
 
-#func _on_end_game_pressed() -> void:
-	#get_tree().change_scene_to_file("res://End.tscn")
+func _update_ui() -> void:
+	if elevation_label:
+		elevation_label.text = "Elevation: %d" % int(round(elevation))

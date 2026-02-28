@@ -1,0 +1,470 @@
+[gd_scene format=3 uid="uid://btw6ej4dwgwsk"]
+
+[ext_resource type="Script" uid="uid://bsnxetqls4pgg" path="res://game.gd" id="1_xkndl"]
+[ext_resource type="Texture2D" uid="uid://dqcwohjetu5vb" path="res://assets/final_sky.webp" id="2_xkndl"]
+[ext_resource type="PackedScene" uid="uid://csl6mjwyfpbvr" path="res://hillside_background.tscn" id="3_u44n3"]
+[ext_resource type="Shader" uid="uid://d2qw71m3bclxt" path="res://hillside_shader.gdshader" id="4_2vekm"]
+[ext_resource type="PackedScene" uid="uid://bvk3gnpxothx" path="res://player.tscn" id="4_sb48q"]
+[ext_resource type="Texture2D" uid="uid://c8wy6uaftugjb" path="res://mtns.png" id="4_yx171"]
+[ext_resource type="Script" uid="uid://cxf1618ho4vex" path="res://player.gd" id="5_r0x5m"]
+[ext_resource type="PackedScene" uid="uid://v87ab5ei0rot" path="res://world_bound.tscn" id="5_t88pq"]
+[ext_resource type="Texture2D" uid="uid://cigbovtxus6mp" path="res://ground.png" id="7_yx171"]
+[ext_resource type="Texture2D" uid="uid://bqtpnkappgmp4" path="res://back_mtns.png" id="8_yhmtn"]
+[ext_resource type="AudioStream" uid="uid://brfjxviqxhc1i" path="res://sounds/goat_scream.wav" id="10_qjyg3"]
+[ext_resource type="AudioStream" uid="uid://78gl1vv5g6cn" path="res://sounds/hooves.wav" id="11_elkpi"]
+[ext_resource type="Script" uid="uid://vi717v7277gc" path="res://stairs.gd" id="11_yhmtn"]
+[ext_resource type="Texture2D" uid="uid://di4wr7b156bhr" path="res://assets/snowy_block.png" id="12_gwjdr"]
+[ext_resource type="Script" path="res://boulder_spawner.gd" id="13_lvtmh"]
+[ext_resource type="AudioStream" uid="uid://baysnehgh55tk" path="res://sounds/background.wav" id="14_yyih5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yx171"]
+shader = ExtResource("4_2vekm")
+shader_parameter/scroll_speed = 0.05
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwjdr"]
+size = Vector2(142, 92.5)
+
+[node name="Game" type="Control" unique_id=886851171]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_xkndl")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=65427438]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -6.0
+offset_right = 1412.0
+offset_bottom = 892.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=646308158]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="EndGame" type="Button" parent="MarginContainer/VBoxContainer" unique_id=301412324]
+visible = false
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 41
+text = "End Game
+
+"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2061979452]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 0
+offset_left = -593.0
+offset_top = -5766.0
+offset_right = 890.0
+offset_bottom = -1089.0
+scale = Vector2(1.7232614, 1.56)
+mouse_filter = 2
+texture = ExtResource("2_xkndl")
+expand_mode = 4
+
+[node name="mtn_side_control" parent="." unique_id=1368323391 instance=ExtResource("3_u44n3")]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+offset_left = 551.0
+offset_top = 260.0
+offset_right = 551.0
+offset_bottom = 260.0
+
+[node name="TextureRect" parent="mtn_side_control" index="0" unique_id=693379726]
+z_index = 2
+offset_left = -1624.0
+offset_top = 32.000015
+offset_right = -660.3489
+offset_bottom = 879.292
+scale = Vector2(3, 3)
+texture = ExtResource("4_yx171")
+expand_mode = 2
+stretch_mode = 5
+script = null
+
+[node name="TextureRect2" type="TextureRect" parent="mtn_side_control" unique_id=2133316199]
+z_index = 1
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_yx171")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1706.0
+offset_top = 196.0
+offset_right = -742.3489
+offset_bottom = 1043.292
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.3926991
+scale = Vector2(3.6480424, 3.8931859)
+texture = ExtResource("7_yx171")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="mtn_side_control" unique_id=1662758057]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_yx171")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2614.0
+offset_top = -564.0
+offset_right = -1637.06
+offset_bottom = 253.23096
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.098481044
+scale = Vector2(3.6480424, 3.8931859)
+texture = ExtResource("8_yhmtn")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="CharacterBody2D" parent="." unique_id=463096412 instance=ExtResource("4_sb48q")]
+z_index = 2
+position = Vector2(374, 1016)
+script = ExtResource("5_r0x5m")
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=33861607]
+stream = ExtResource("10_qjyg3")
+volume_db = 2.493
+
+[node name="Hooves" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=943545993]
+stream = ExtResource("11_elkpi")
+volume_db = 4.63
+
+[node name="floor" parent="." unique_id=393008036 instance=ExtResource("5_t88pq")]
+position = Vector2(1279, 1589.0001)
+rotation = -0.3926991
+
+[node name="left_wall" parent="." unique_id=1507079395 instance=ExtResource("5_t88pq")]
+position = Vector2(-175, 693)
+rotation = 1.5707964
+
+[node name="right_wall" parent="." unique_id=1281283488 instance=ExtResource("5_t88pq")]
+position = Vector2(1706, 140)
+rotation = 4.712389
+
+[node name="Stairs" type="Node2D" parent="." unique_id=970731367]
+position = Vector2(-142, 26)
+script = ExtResource("11_yhmtn")
+start_pos = Vector2(0, 0)
+
+[node name="s2" type="StaticBody2D" parent="Stairs" unique_id=1229409389]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s2" unique_id=1234096040]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s2" unique_id=849559407]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s3" type="StaticBody2D" parent="Stairs" unique_id=392842084]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s3" unique_id=56991169]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s3" unique_id=1212953150]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s4" type="StaticBody2D" parent="Stairs" unique_id=1046982069]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s4" unique_id=114607974]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s4" unique_id=1376159397]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s5" type="StaticBody2D" parent="Stairs" unique_id=618544421]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s5" unique_id=1419931812]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s5" unique_id=1669589585]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s6" type="StaticBody2D" parent="Stairs" unique_id=1741019902]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s6" unique_id=1628870107]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s6" unique_id=1373037822]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s7" type="StaticBody2D" parent="Stairs" unique_id=1078206753]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s7" unique_id=1354381137]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s7" unique_id=1468934173]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s8" type="StaticBody2D" parent="Stairs" unique_id=799358804]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s8" unique_id=562784872]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s8" unique_id=177567126]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s9" type="StaticBody2D" parent="Stairs" unique_id=1011995979]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s9" unique_id=1998451255]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s9" unique_id=1990566548]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s10" type="StaticBody2D" parent="Stairs" unique_id=827288701]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s10" unique_id=1998456489]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s10" unique_id=1291903053]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s11" type="StaticBody2D" parent="Stairs" unique_id=1347824428]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s11" unique_id=536305537]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s11" unique_id=1440154204]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s12" type="StaticBody2D" parent="Stairs" unique_id=1007595210]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s12" unique_id=922822340]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s12" unique_id=2102164395]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s13" type="StaticBody2D" parent="Stairs" unique_id=1790290850]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s13" unique_id=204818748]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s13" unique_id=1023210273]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s14" type="StaticBody2D" parent="Stairs" unique_id=186375172]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s14" unique_id=226196877]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s14" unique_id=1779690636]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s15" type="StaticBody2D" parent="Stairs" unique_id=210478119]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s15" unique_id=1333964442]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s15" unique_id=453766731]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s16" type="StaticBody2D" parent="Stairs" unique_id=974269631]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s16" unique_id=651566170]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s16" unique_id=2043547905]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s17" type="StaticBody2D" parent="Stairs" unique_id=1332252835]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s17" unique_id=430431180]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s17" unique_id=1984605199]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="s1" type="StaticBody2D" parent="Stairs" unique_id=1484979685]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s1" unique_id=2051581193]
+z_index = 2
+position = Vector2(216, 750)
+shape = SubResource("RectangleShape2D_gwjdr")
+
+[node name="s1" type="TextureRect" parent="Stairs/s1" unique_id=484275228]
+z_index = 2
+offset_left = 146.0
+offset_top = 510.0
+offset_right = 246.0
+offset_bottom = 1010.0
+texture = ExtResource("12_gwjdr")
+expand_mode = 1
+
+[node name="left_wall_test" type="StaticBody2D" parent="." unique_id=376323761]
+position = Vector2(-75, 1157)
+
+[node name="boulder_spawner" type="Node2D" parent="." unique_id=833429198]
+position = Vector2(463, 737)
+script = ExtResource("13_lvtmh")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=663159455]
+stream = ExtResource("14_yyih5")
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1349366453]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1801867884]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=87556286]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
+
+[editable path="mtn_side_control"]

@@ -155,16 +155,17 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_dgbyp"]
 radius = 121.20231
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dicgi"]
+radius = 125.004
+
 [node name="boulder" type="RigidBody2D" unique_id=1189751213]
-light_mask = 2
-visibility_layer = 2
 mass = 15.051
 physics_material_override = SubResource("PhysicsMaterial_dicgi")
 script = ExtResource("1_dicgi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1344039385]
 z_index = 5
-position = Vector2(182.5, 192)
+position = Vector2(176.00002, 205.00002)
 scale = Vector2(7.5178566, 7.4)
 sprite_frames = SubResource("SpriteFrames_ynoqy")
 animation = &"rolling"
@@ -173,3 +174,10 @@ animation = &"rolling"
 z_index = 5
 position = Vector2(189, 202)
 shape = SubResource("CircleShape2D_dgbyp")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1585945317]
+position = Vector2(185, 200)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1900358827]
+position = Vector2(187, 202)
+shape = SubResource("CircleShape2D_dicgi")
