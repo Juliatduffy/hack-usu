@@ -2,17 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bsnxetqls4pgg" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="Texture2D" uid="uid://dqcwohjetu5vb" path="res://assets/final_sky.webp" id="2_xkndl"]
-[ext_resource type="PackedScene" path="res://hillside_background.tscn" id="3_u44n3"]
-[ext_resource type="Shader" path="res://hillside_shader.gdshader" id="4_2vekm"]
+[ext_resource type="PackedScene" uid="uid://csl6mjwyfpbvr" path="res://hillside_background.tscn" id="3_u44n3"]
+[ext_resource type="Shader" uid="uid://d2qw71m3bclxt" path="res://hillside_shader.gdshader" id="4_2vekm"]
 [ext_resource type="Texture2D" uid="uid://15hbafkanyh" path="res://hillside_corner.png" id="4_3mrqo"]
-[ext_resource type="PackedScene" path="res://player.tscn" id="4_sb48q"]
+[ext_resource type="PackedScene" uid="uid://cnc1tw67gh6s3" path="res://player.tscn" id="4_sb48q"]
 [ext_resource type="Script" uid="uid://cxf1618ho4vex" path="res://player.gd" id="5_r0x5m"]
-[ext_resource type="PackedScene" path="res://world_bound.tscn" id="5_t88pq"]
+[ext_resource type="PackedScene" uid="uid://brn0tsp4uvxqs" path="res://world_bound.tscn" id="5_t88pq"]
 [ext_resource type="Texture2D" uid="uid://c2umf6ep1jn3b" path="res://green_hillside_ribbon.png" id="5_yx171"]
 [ext_resource type="PackedScene" uid="uid://bfg7jry2dlten" path="res://boulder_1.tscn" id="10_yx171"]
-[ext_resource type="Script" path="res://boulder_1.gd" id="11_yhmtn"]
+[ext_resource type="Script" uid="uid://gapthoixe127" path="res://boulder_1.gd" id="11_yhmtn"]
 [ext_resource type="Script" uid="uid://vi717v7277gc" path="res://stairs.gd" id="12_lvtmh"]
 [ext_resource type="Texture2D" uid="uid://di4wr7b156bhr" path="res://assets/snowy_block.png" id="13_yyih5"]
+[ext_resource type="AudioStream" uid="uid://78gl1vv5g6cn" path="res://sounds/hooves.wav" id="14_elkpi"]
+[ext_resource type="AudioStream" uid="uid://baysnehgh55tk" path="res://sounds/background.wav" id="14_yyih5"]
+[ext_resource type="AudioStream" uid="uid://8y3vakwhgb7p" path="res://sounds/landing.wav" id="15_0yprl"]
+[ext_resource type="AudioStream" uid="uid://brfjxviqxhc1i" path="res://sounds/goat_scream.wav" id="16_wuoie"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7uckp"]
 shader = ExtResource("4_2vekm")
@@ -137,6 +141,20 @@ texture = ExtResource("4_3mrqo")
 position = Vector2(690, 455)
 wall_min_slide_angle = 0.012217305
 script = ExtResource("5_r0x5m")
+
+[node name="Hooves" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=1814769405]
+position = Vector2(-690, -455)
+stream = ExtResource("14_elkpi")
+volume_db = 4.63
+
+[node name="Landing" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=1811716021]
+position = Vector2(-690, -455)
+stream = ExtResource("15_0yprl")
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=497523752]
+position = Vector2(-690, -455)
+stream = ExtResource("16_wuoie")
+volume_db = 5.342
 
 [node name="floor" parent="." unique_id=393008036 instance=ExtResource("5_t88pq")]
 position = Vector2(1248.9999, 695)
@@ -360,6 +378,10 @@ offset_bottom = 60.0
 texture = ExtResource("13_yyih5")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=938226540]
+stream = ExtResource("14_yyih5")
+autoplay = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
 

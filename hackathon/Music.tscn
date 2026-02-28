@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bbgx4cbmsgym5"]
+
+[ext_resource type="AudioStream" uid="uid://baysnehgh55tk" path="res://sounds/background.wav" id="1_fw6bl"]
+
+[node name="Music" type="AudioStreamPlayer2D" unique_id=683616238]
+stream = ExtResource("1_fw6bl")

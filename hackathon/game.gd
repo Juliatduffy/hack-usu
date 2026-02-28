@@ -38,10 +38,10 @@ extends Control
 func _process(delta: float) -> void:
 	if bg.material == null:
 		return
-
 	#_uv_offset_y = fmod(_uv_offset_y + _uv_speed * delta, 1.0)
 	#(bg.material as ShaderMaterial).set_shader_parameter("y_offset", _uv_offset_y)
 	#
+	Music.play()
 	if get_node("CharacterBody2D/CollisionShape2D").global_position.x < get_node("left_wall_test").global_position.x:
 		get_tree().change_scene_to_file("res://End.tscn")
 		
