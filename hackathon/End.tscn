@@ -168,3 +168,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lry8e")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ede3x")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7wqwc")
 text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer2/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Play Again" to="." method="_on_play_again_pressed"]

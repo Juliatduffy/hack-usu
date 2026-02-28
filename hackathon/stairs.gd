@@ -26,7 +26,7 @@ extends Node2D
 # -------------------------
 # Layout
 # -------------------------
-@export var start_pos: Vector2 = Vector2(0, 700)
+@export var start_pos: Vector2 = Vector2(0, 1200)
 @export var step_count: int = 17
 
 # -------------------------

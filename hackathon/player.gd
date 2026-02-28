@@ -15,6 +15,7 @@ func _ready():
 func die() -> void:
 	#print("Player died")
 	dead = true
+	$Scream.play()
 	animated_sprite.play("squish")
 	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file("res://End.tscn")
@@ -77,7 +78,6 @@ func _physics_process(delta: float) -> void:
 			else:
 				animated_sprite.play("walk_r")
 					
-
 		move_and_slide()
 	
 	

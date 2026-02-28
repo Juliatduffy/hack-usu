@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c42nsax6fksbm"]
+[gd_scene format=3 uid="uid://btw6ej4dwgwsk"]
 
 [ext_resource type="Script" uid="uid://bsnxetqls4pgg" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="Texture2D" uid="uid://dqcwohjetu5vb" path="res://assets/final_sky.webp" id="2_xkndl"]
@@ -7,13 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://bvk3gnpxothx" path="res://player.tscn" id="4_sb48q"]
 [ext_resource type="Texture2D" uid="uid://c8wy6uaftugjb" path="res://mtns.png" id="4_yx171"]
 [ext_resource type="Script" uid="uid://cxf1618ho4vex" path="res://player.gd" id="5_r0x5m"]
-[ext_resource type="PackedScene" uid="uid://brn0tsp4uvxqs" path="res://world_bound.tscn" id="5_t88pq"]
+[ext_resource type="PackedScene" uid="uid://v87ab5ei0rot" path="res://world_bound.tscn" id="5_t88pq"]
 [ext_resource type="Texture2D" uid="uid://cigbovtxus6mp" path="res://ground.png" id="7_yx171"]
 [ext_resource type="Texture2D" uid="uid://bqtpnkappgmp4" path="res://back_mtns.png" id="8_yhmtn"]
+[ext_resource type="AudioStream" uid="uid://brfjxviqxhc1i" path="res://sounds/goat_scream.wav" id="10_qjyg3"]
+[ext_resource type="AudioStream" uid="uid://78gl1vv5g6cn" path="res://sounds/hooves.wav" id="11_elkpi"]
 [ext_resource type="Script" uid="uid://vi717v7277gc" path="res://stairs.gd" id="11_yhmtn"]
 [ext_resource type="Texture2D" uid="uid://di4wr7b156bhr" path="res://assets/snowy_block.png" id="12_gwjdr"]
 [ext_resource type="Script" uid="uid://d38dcd0hk7g8y" path="res://boulder_spawner.gd" id="13_lvtmh"]
 [ext_resource type="PackedScene" uid="uid://ctymwoge700lh" path="res://boulder.tscn" id="14_yyih5"]
+[ext_resource type="Script" path="res://boulder_spawner.gd" id="13_lvtmh"]
+[ext_resource type="AudioStream" uid="uid://baysnehgh55tk" path="res://sounds/background.wav" id="14_yyih5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yx171"]
 shader = ExtResource("4_2vekm")
@@ -27,6 +31,9 @@ layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_xkndl")
+scroll_speed_px_per_sec = null
+points_per_second = null
+elevation_per_second = null
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=65427438]
 layout_mode = 1
@@ -138,6 +145,14 @@ stretch_mode = 5
 z_index = 2
 position = Vector2(374, 1016)
 script = ExtResource("5_r0x5m")
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=33861607]
+stream = ExtResource("10_qjyg3")
+volume_db = 2.493
+
+[node name="Hooves" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=943545993]
+stream = ExtResource("11_elkpi")
+volume_db = 4.63
 
 [node name="floor" parent="." unique_id=393008036 instance=ExtResource("5_t88pq")]
 position = Vector2(1279, 1589.0001)
@@ -435,6 +450,26 @@ position = Vector2(-75, 1157)
 position = Vector2(791, -271)
 script = ExtResource("13_lvtmh")
 boulder_scene = ExtResource("14_yyih5")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=663159455]
+stream = ExtResource("14_yyih5")
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1349366453]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1801867884]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=87556286]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 43.0
+scale = Vector2(2, 2)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
 
