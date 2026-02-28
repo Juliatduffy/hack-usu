@@ -1,6 +1,6 @@
 extends Control
 
-@export var scroll_speed_px_per_sec: float = 20.0  
+@export var scroll_speed_px_per_sec: float = 5.0  
 
 @onready var bg: TextureRect = $TextureRect
 
@@ -41,5 +41,5 @@ func _process(delta: float) -> void:
 	_uv_offset_y = fmod(_uv_offset_y + _uv_speed * delta, 1.0)
 	(bg.material as ShaderMaterial).set_shader_parameter("y_offset", _uv_offset_y)
 
-func _on_end_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://End.tscn")
+#func _on_end_game_pressed() -> void:
+	#get_tree().change_scene_to_file("res://End.tscn")
