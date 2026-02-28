@@ -1,9 +1,9 @@
 extends Node2D
 
 @export var boulder_scene: PackedScene
-@export var spawn_interval: float = 5.0
+@export var spawn_interval: float = 3.0
 @export var move_speed: float = 2.0      # higher = faster oscillation
-@export var move_distance: float = 200.0
+@export var move_distance: float = 900.0
 
 var start_x: float
 var time: float = 0.0

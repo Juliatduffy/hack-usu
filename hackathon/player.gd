@@ -5,7 +5,6 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var boulder = get_node("boulder_1")
 
 @onready var dead : bool = false
 @onready var duck : bool = false
@@ -13,12 +12,13 @@ const JUMP_VELOCITY = -400.0
 func _ready():
 	add_to_group("player")
 	
-func die():
+func die() -> void:
+	#print("Player died")
 	dead = true
 	animated_sprite.play("squish")
-	
 	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file("res://End.tscn")
+	
 func _physics_process(delta: float) -> void:
 	$normal.disabled = false
 	$small.disabled = true
@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 
 	if dead:
 		return
+		
 	if Input.is_action_pressed("ui_down"):
 		if Input.is_action_pressed("ui_left"):
 			animated_sprite.play("duck_l")

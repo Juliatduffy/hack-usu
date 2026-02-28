@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://vi717v7277gc" path="res://stairs.gd" id="11_yhmtn"]
 [ext_resource type="Texture2D" uid="uid://di4wr7b156bhr" path="res://assets/snowy_block.png" id="12_gwjdr"]
 [ext_resource type="Script" uid="uid://d38dcd0hk7g8y" path="res://boulder_spawner.gd" id="13_lvtmh"]
+[ext_resource type="PackedScene" uid="uid://ctymwoge700lh" path="res://boulder.tscn" id="14_yyih5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yx171"]
 shader = ExtResource("4_2vekm")
@@ -431,8 +432,9 @@ expand_mode = 1
 position = Vector2(-75, 1157)
 
 [node name="boulder_spawner" type="Node2D" parent="." unique_id=833429198]
-position = Vector2(463, 737)
+position = Vector2(791, -271)
 script = ExtResource("13_lvtmh")
+boulder_scene = ExtResource("14_yyih5")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
 
