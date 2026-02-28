@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_52bhu")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=275031790]
@@ -19,11 +20,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=569197336]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1203436793]
 layout_mode = 2
@@ -49,6 +52,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_upmy7")
 
 [node name="Label" type="Label" parent="." unique_id=285108280]

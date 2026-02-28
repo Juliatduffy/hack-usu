@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cmubpfwqu5fev"]
+
+[ext_resource type="Texture2D" uid="uid://n45w4smx7658" path="res://assets/back.png" id="1_lm0ep"]
+[ext_resource type="Script" uid="uid://b8760iny2fcqx" path="res://end.gd" id="1_lry8e"]
+
+[node name="End" type="Control" unique_id=1405465718]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_lry8e")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=65427438]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 1400.0
+offset_bottom = 898.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=55922270]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=92956431]
+layout_mode = 2
+theme_override_font_sizes/font_size = 57
+text = "Game Over!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1717685256]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Home" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=301412324]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 41
+text = "Home
+"
+
+[node name="Play Again" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=119229060]
+layout_mode = 2
+theme_override_font_sizes/font_size = 41
+text = "Play"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=264859543]
+layout_mode = 2
+theme_override_font_sizes/font_size = 41
+text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2061979452]
+z_index = -1
+layout_mode = 0
+offset_left = -10.0
+offset_top = -8.0
+offset_right = 1416.0
+offset_bottom = 920.0
+mouse_filter = 2
+texture = ExtResource("1_lm0ep")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
