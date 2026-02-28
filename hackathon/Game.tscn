@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bsnxetqls4pgg" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="Texture2D" uid="uid://dqcwohjetu5vb" path="res://assets/final_sky.webp" id="2_xkndl"]
-[ext_resource type="PackedScene" uid="uid://csl6mjwyfpbvr" path="res://hillside_background.tscn" id="3_u44n3"]
+[ext_resource type="PackedScene" path="res://hillside_background.tscn" id="3_u44n3"]
 [ext_resource type="Shader" uid="uid://d2qw71m3bclxt" path="res://hillside_shader.gdshader" id="4_2vekm"]
 [ext_resource type="PackedScene" uid="uid://bvk3gnpxothx" path="res://player.tscn" id="4_sb48q"]
 [ext_resource type="Texture2D" uid="uid://c8wy6uaftugjb" path="res://mtns.png" id="4_yx171"]
 [ext_resource type="Script" uid="uid://cxf1618ho4vex" path="res://player.gd" id="5_r0x5m"]
-[ext_resource type="PackedScene" uid="uid://brn0tsp4uvxqs" path="res://world_bound.tscn" id="5_t88pq"]
+[ext_resource type="PackedScene" path="res://world_bound.tscn" id="5_t88pq"]
 [ext_resource type="Texture2D" uid="uid://cigbovtxus6mp" path="res://ground.png" id="7_yx171"]
 [ext_resource type="Texture2D" uid="uid://bqtpnkappgmp4" path="res://back_mtns.png" id="8_yhmtn"]
 [ext_resource type="AudioStream" uid="uid://brfjxviqxhc1i" path="res://sounds/goat_scream.wav" id="10_qjyg3"]
@@ -505,11 +505,11 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HardCode5" type="Node2D" parent="." unique_id=1904652617]
-position = Vector2(1700, 1310)
+position = Vector2(1770, 1310)
 
 [node name="HardCode" type="TextureRect" parent="HardCode5" unique_id=846943633]
 z_index = 2
-offset_right = 150.0
+offset_right = 100.0
 offset_bottom = 500.0
 texture = ExtResource("12_gwjdr")
 expand_mode = 1
