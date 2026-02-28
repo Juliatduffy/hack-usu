@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://bfg7jry2dlten"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_84fkb"]
-bounce = 0.54
+friction = 0.74
+bounce = 0.72
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_84fkb"]
-radius = 177.01129
+radius = 97.00516
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wiki5"]
-radius = 177.00282
+radius = 97.020615
 
 [node name="boulder_1" type="RigidBody2D" unique_id=1264595469]
 physics_material_override = SubResource("PhysicsMaterial_84fkb")

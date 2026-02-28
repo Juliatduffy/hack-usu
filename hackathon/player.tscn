@@ -2,7 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://ds26ttb51epfn" path="res://assets/goat.png" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://dr8nt0lbc2mer" path="res://assets/goats_left.png" id="1_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://bhoct56144hr2" path="res://assets/dead_l.png" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://cwlmtmk6tdp4c" path="res://assets/unnamed.png" id="2_onrkg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iwfv"]
+atlas = ExtResource("2_hqtel")
+region = Rect2(3, 3, 54, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_331ug"]
+atlas = ExtResource("2_onrkg")
+region = Rect2(2, 3, 55, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
 atlas = ExtResource("1_i3pqv")
@@ -154,6 +163,22 @@ region = Rect2(420, 0, 60, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iwfv")
+}],
+"loop": true,
+"name": &"duck_l",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_331ug")
+}],
+"loop": true,
+"name": &"duck_r",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jm5j8")
@@ -314,7 +339,7 @@ height = 220.03574
 position = Vector2(221, -22)
 scale = Vector2(4.55, 4.2)
 sprite_frames = SubResource("SpriteFrames_dw050")
-animation = &"squish"
+animation = &"duck_r"
 autoplay = "fall_r"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2142942405]
