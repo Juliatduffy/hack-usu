@@ -21,7 +21,7 @@ extends Node2D
 @export var min_jump_height_diff: float = 100.0
 
 @export var y_min: float = 500.0
-@export var y_max: float = 850.0
+@export var y_max: float = 900.0
 
 # -------------------------
 # Layout
