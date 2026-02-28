@@ -171,3 +171,4 @@ text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer2/Home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Quit" to="." method="_on_quit_pressed"]
