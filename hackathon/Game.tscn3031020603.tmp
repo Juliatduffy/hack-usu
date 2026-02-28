@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://c42nsax6fksbm"]
+
+[ext_resource type="Script" uid="uid://bsnxetqls4pgg" path="res://game.gd" id="1_xkndl"]
+[ext_resource type="Texture2D" uid="uid://dqcwohjetu5vb" path="res://assets/final_sky.webp" id="2_xkndl"]
+[ext_resource type="PackedScene" path="res://hillside_background.tscn" id="3_u44n3"]
+[ext_resource type="Shader" path="res://hillside_shader.gdshader" id="4_2vekm"]
+[ext_resource type="Texture2D" uid="uid://15hbafkanyh" path="res://hillside_corner.png" id="4_3mrqo"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="4_sb48q"]
+[ext_resource type="Script" uid="uid://cxf1618ho4vex" path="res://player.gd" id="5_r0x5m"]
+[ext_resource type="PackedScene" path="res://world_bound.tscn" id="5_t88pq"]
+[ext_resource type="Texture2D" uid="uid://c2umf6ep1jn3b" path="res://green_hillside_ribbon.png" id="5_yx171"]
+[ext_resource type="PackedScene" uid="uid://bfg7jry2dlten" path="res://boulder_1.tscn" id="10_yx171"]
+[ext_resource type="Script" path="res://boulder_1.gd" id="11_yhmtn"]
+[ext_resource type="Script" uid="uid://vi717v7277gc" path="res://stairs.gd" id="12_lvtmh"]
+[ext_resource type="Texture2D" uid="uid://di4wr7b156bhr" path="res://assets/snowy_block.png" id="13_yyih5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uckp"]
+shader = ExtResource("4_2vekm")
+shader_parameter/scroll_speed = 0.15
+
+[sub_resource type="GDScript" id="GDScript_1tm76"]
+script/source = "extends TextureRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vekm"]
+radius = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvtmh"]
+
+[node name="Game" type="Control" unique_id=886851171]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_xkndl")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=65427438]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 1400.0
+offset_bottom = 898.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=646308158]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="EndGame" type="Button" parent="MarginContainer/VBoxContainer" unique_id=301412324]
+visible = false
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 41
+text = "End Game
+
+"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2061979452]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 0
+offset_left = -30.0
+offset_top = -3770.0
+offset_right = 1453.0
+offset_bottom = 907.0
+mouse_filter = 2
+texture = ExtResource("2_xkndl")
+expand_mode = 4
+
+[node name="mtn_side_control" parent="." unique_id=1368323391 instance=ExtResource("3_u44n3")]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+offset_left = 551.0
+offset_top = 260.0
+offset_right = 551.0
+offset_bottom = 260.0
+
+[node name="TextureRect" parent="mtn_side_control" index="0" unique_id=693379726]
+offset_left = -1649.0
+offset_top = 47.99994
+offset_right = -685.3489
+offset_bottom = 895.29193
+scale = Vector2(3, 3)
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="mtn_side_control" unique_id=1089106883]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_7uckp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1411.9998
+offset_top = 594.0
+offset_right = -448.34863
+offset_bottom = 1441.292
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.3926991
+scale = Vector2(3, 3)
+texture = ExtResource("5_yx171")
+expand_mode = 2
+stretch_mode = 1
+script = SubResource("GDScript_1tm76")
+
+[node name="corner" type="TextureRect" parent="mtn_side_control" unique_id=200085123]
+visible = false
+layout_mode = 0
+offset_left = 92.0
+offset_top = 641.0
+offset_right = 1175.0
+offset_bottom = 1115.0
+rotation = -0.3678357
+texture = ExtResource("4_3mrqo")
+
+[node name="CharacterBody2D" parent="." unique_id=463096412 instance=ExtResource("4_sb48q")]
+position = Vector2(690, 455)
+wall_min_slide_angle = 0.012217305
+script = ExtResource("5_r0x5m")
+
+[node name="floor" parent="." unique_id=393008036 instance=ExtResource("5_t88pq")]
+position = Vector2(1248.9999, 695)
+rotation = -0.3926991
+
+[node name="right_wall" parent="." unique_id=1281283488 instance=ExtResource("5_t88pq")]
+position = Vector2(1453, 173)
+rotation = 4.712389
+
+[node name="left_wall_test" type="CollisionShape2D" parent="." unique_id=1331281314]
+position = Vector2(-3, 676)
+shape = SubResource("CircleShape2D_2vekm")
+
+[node name="boulder_1" parent="." unique_id=1838656237 instance=ExtResource("10_yx171")]
+position = Vector2(1145, 82)
+script = ExtResource("11_yhmtn")
+
+[node name="Stairs" type="Control" parent="." unique_id=1664817870]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_lvtmh")
+
+[node name="s1" type="StaticBody2D" parent="Stairs" unique_id=431007593]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s1" unique_id=2115961334]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s1" unique_id=100121747]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
+
+[editable path="mtn_side_control"]

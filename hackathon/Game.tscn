@@ -2,15 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bsnxetqls4pgg" path="res://game.gd" id="1_xkndl"]
 [ext_resource type="Texture2D" uid="uid://dqcwohjetu5vb" path="res://assets/final_sky.webp" id="2_xkndl"]
-[ext_resource type="PackedScene" uid="uid://csl6mjwyfpbvr" path="res://hillside_background.tscn" id="3_u44n3"]
-[ext_resource type="Shader" uid="uid://d2qw71m3bclxt" path="res://hillside_shader.gdshader" id="4_2vekm"]
+[ext_resource type="PackedScene" path="res://hillside_background.tscn" id="3_u44n3"]
+[ext_resource type="Shader" path="res://hillside_shader.gdshader" id="4_2vekm"]
 [ext_resource type="Texture2D" uid="uid://15hbafkanyh" path="res://hillside_corner.png" id="4_3mrqo"]
-[ext_resource type="PackedScene" uid="uid://cnc1tw67gh6s3" path="res://player.tscn" id="4_sb48q"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="4_sb48q"]
 [ext_resource type="Script" uid="uid://cxf1618ho4vex" path="res://player.gd" id="5_r0x5m"]
-[ext_resource type="PackedScene" uid="uid://brn0tsp4uvxqs" path="res://world_bound.tscn" id="5_t88pq"]
+[ext_resource type="PackedScene" path="res://world_bound.tscn" id="5_t88pq"]
 [ext_resource type="Texture2D" uid="uid://c2umf6ep1jn3b" path="res://green_hillside_ribbon.png" id="5_yx171"]
 [ext_resource type="PackedScene" uid="uid://bfg7jry2dlten" path="res://boulder_1.tscn" id="10_yx171"]
-[ext_resource type="Script" uid="uid://gapthoixe127" path="res://boulder_1.gd" id="11_yhmtn"]
+[ext_resource type="Script" path="res://boulder_1.gd" id="11_yhmtn"]
+[ext_resource type="Script" uid="uid://vi717v7277gc" path="res://stairs.gd" id="12_lvtmh"]
+[ext_resource type="Texture2D" uid="uid://di4wr7b156bhr" path="res://assets/snowy_block.png" id="13_yyih5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7uckp"]
 shader = ExtResource("4_2vekm")
@@ -32,6 +34,8 @@ func _process(delta: float) -> void:
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2vekm"]
 radius = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvtmh"]
 
 [node name="Game" type="Control" unique_id=886851171]
 layout_mode = 3
@@ -130,7 +134,7 @@ rotation = -0.3678357
 texture = ExtResource("4_3mrqo")
 
 [node name="CharacterBody2D" parent="." unique_id=463096412 instance=ExtResource("4_sb48q")]
-position = Vector2(533, 715)
+position = Vector2(690, 455)
 wall_min_slide_angle = 0.012217305
 script = ExtResource("5_r0x5m")
 
@@ -149,6 +153,213 @@ shape = SubResource("CircleShape2D_2vekm")
 [node name="boulder_1" parent="." unique_id=1838656237 instance=ExtResource("10_yx171")]
 position = Vector2(1145, 82)
 script = ExtResource("11_yhmtn")
+
+[node name="Stairs" type="Node2D" parent="." unique_id=1706396270]
+script = ExtResource("12_lvtmh")
+
+[node name="s1" type="StaticBody2D" parent="Stairs" unique_id=431007593]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s1" unique_id=2115961334]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s1" unique_id=100121747]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s2" type="StaticBody2D" parent="Stairs" unique_id=797133291]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s2" unique_id=476956245]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s2" unique_id=30125327]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s3" type="StaticBody2D" parent="Stairs" unique_id=89396595]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s3" unique_id=1679275834]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s3" unique_id=1732887276]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s4" type="StaticBody2D" parent="Stairs" unique_id=601230890]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s4" unique_id=75858251]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s4" unique_id=510909428]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s5" type="StaticBody2D" parent="Stairs" unique_id=1327914223]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s5" unique_id=2025694476]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s5" unique_id=1410967015]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s6" type="StaticBody2D" parent="Stairs" unique_id=963513715]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s6" unique_id=1578430956]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s6" unique_id=1664069446]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s7" type="StaticBody2D" parent="Stairs" unique_id=1309899086]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s7" unique_id=903264668]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s7" unique_id=1420378237]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s8" type="StaticBody2D" parent="Stairs" unique_id=41393652]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s8" unique_id=1195861911]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s8" unique_id=838498211]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s9" type="StaticBody2D" parent="Stairs" unique_id=317572808]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s9" unique_id=2128030041]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s9" unique_id=1801437462]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s10" type="StaticBody2D" parent="Stairs" unique_id=987852992]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s10" unique_id=521686216]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s10" unique_id=1621684424]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s11" type="StaticBody2D" parent="Stairs" unique_id=64440254]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s11" unique_id=1251943945]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s11" unique_id=1924961898]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s12" type="StaticBody2D" parent="Stairs" unique_id=912443648]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s12" unique_id=46876544]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s12" unique_id=654761291]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s13" type="StaticBody2D" parent="Stairs" unique_id=459708034]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s13" unique_id=761829777]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s13" unique_id=815273749]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s14" type="StaticBody2D" parent="Stairs" unique_id=241500513]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s14" unique_id=1390088124]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s14" unique_id=906765388]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s15" type="StaticBody2D" parent="Stairs" unique_id=2069038568]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s15" unique_id=1719693936]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s15" unique_id=539199342]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s16" type="StaticBody2D" parent="Stairs" unique_id=1305260817]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s16" unique_id=1487655011]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s16" unique_id=165825262]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="s17" type="StaticBody2D" parent="Stairs" unique_id=588061017]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs/s17" unique_id=219612394]
+shape = SubResource("RectangleShape2D_lvtmh")
+
+[node name="s1" type="TextureRect" parent="Stairs/s17" unique_id=130849610]
+offset_right = 100.0
+offset_bottom = 60.0
+texture = ExtResource("13_yyih5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
 
