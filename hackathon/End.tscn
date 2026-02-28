@@ -1,7 +1,115 @@
 [gd_scene format=3 uid="uid://cmubpfwqu5fev"]
 
-[ext_resource type="Texture2D" uid="uid://n45w4smx7658" path="res://assets/back.png" id="1_lm0ep"]
 [ext_resource type="Script" uid="uid://b8760iny2fcqx" path="res://end.gd" id="1_lry8e"]
+[ext_resource type="Texture2D" uid="uid://dlpstb1heoywx" path="res://assets/shitty_game_over.png" id="2_lry8e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lry8e"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34117648, 0.1254902, 0.49019608, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.019607844, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ede3x"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.69018185, 0.19021416, 0.6881404, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34117648, 0.1254902, 0.49019608, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.019607844, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wqwc"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.89315605, 0.52821195, 0.88420343, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34117648, 0.1254902, 0.49019608, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.019607844, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oufnp"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34117648, 0.1254902, 0.49019608, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.019607844, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxfto"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.69018185, 0.19021416, 0.6881404, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34117648, 0.1254902, 0.49019608, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.019607844, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4165"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.89315605, 0.52821195, 0.88420343, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34117648, 0.1254902, 0.49019608, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.019607844, 0, 0, 0.6)
 
 [node name="End" type="Control" unique_id=1405465718]
 layout_mode = 3
@@ -9,64 +117,54 @@ anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_lry8e")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=65427438]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 1400.0
-offset_bottom = 898.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=55922270]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=92956431]
-layout_mode = 2
-theme_override_font_sizes/font_size = 57
-text = "Game Over!"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1717685256]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-
-[node name="Home" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=301412324]
-z_index = 1
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 41
-text = "Home
-"
-
-[node name="Play Again" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=119229060]
-layout_mode = 2
-theme_override_font_sizes/font_size = 41
-text = "Play"
-
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=264859543]
-layout_mode = 2
-theme_override_font_sizes/font_size = 41
-text = "Quit"
-
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2061979452]
 z_index = -1
 layout_mode = 0
-offset_left = -10.0
-offset_top = -8.0
-offset_right = 1416.0
-offset_bottom = 920.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 1401.0
+offset_bottom = 902.0
 mouse_filter = 2
-texture = ExtResource("1_lm0ep")
+texture = ExtResource("2_lry8e")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Home" to="." method="_on_home_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1426913989]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 609.0
+offset_right = 895.0
+offset_bottom = 820.0
+mouse_filter = 2
+theme_override_constants/separation = 23
+
+[node name="Home" type="Button" parent="VBoxContainer2" unique_id=2106506431]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_colors/icon_focus_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_constants/h_separation = 20
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_lry8e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ede3x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7wqwc")
+text = "Home"
+
+[node name="Play Again" type="Button" parent="VBoxContainer2" unique_id=1897453515]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_colors/icon_focus_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_constants/h_separation = 20
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_oufnp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bxfto")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x4165")
+text = "Play"
+
+[node name="Quit" type="Button" parent="VBoxContainer2" unique_id=1357925702]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_colors/icon_focus_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_constants/h_separation = 20
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_lry8e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ede3x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7wqwc")
+text = "Quit"

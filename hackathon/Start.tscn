@@ -1,7 +1,61 @@
 [gd_scene format=3 uid="uid://csnbhdvbfmikl"]
 
 [ext_resource type="Script" uid="uid://d1pei6kvtkm2e" path="res://start.gd" id="1_52bhu"]
-[ext_resource type="Texture2D" uid="uid://n45w4smx7658" path="res://assets/back.png" id="2_upmy7"]
+[ext_resource type="Texture2D" uid="uid://cikpppctb2py4" path="res://assets/pov_you're_a_goat.png" id="2_52bhu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upmy7"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34117648, 0.1254902, 0.49019608, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.019607844, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52bhu"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.69018185, 0.19021416, 0.6881404, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34117648, 0.1254902, 0.49019608, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.019607844, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx2gx"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.89315605, 0.52821195, 0.88420343, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.34117648, 0.1254902, 0.49019608, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.019607844, 0, 0, 0.6)
 
 [node name="Start" type="Control" unique_id=357869818]
 layout_mode = 3
@@ -22,27 +76,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=569197336]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-mouse_filter = 2
-
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1203436793]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Start Game"
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2143405874]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "How To Play"
-
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=379978575]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Quit"
-
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1926598078]
 z_index = -1
 z_as_relative = false
@@ -53,26 +86,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_upmy7")
+texture = ExtResource("2_52bhu")
 
-[node name="Label" type="Label" parent="." unique_id=285108280]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=569197336]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -207.0
-offset_top = -38.5
-offset_right = 207.0
-offset_bottom = 38.5
+anchor_bottom = 1.0
+offset_left = -191.5
+offset_top = -191.0
+offset_right = 191.5
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 56
-text = "Seven Summits"
-horizontal_alignment = 1
-vertical_alignment = 1
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 23
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1203436793]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_colors/icon_focus_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_constants/h_separation = 20
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_upmy7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_52bhu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx2gx")
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=379978575]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_colors/icon_focus_color = Color(0.83137256, 0.36078432, 0.827451, 1)
+theme_override_constants/h_separation = 20
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_upmy7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_52bhu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gx2gx")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
