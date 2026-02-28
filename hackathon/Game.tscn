@@ -6,8 +6,8 @@
 [ext_resource type="Shader" uid="uid://d2qw71m3bclxt" path="res://hillside_shader.gdshader" id="4_2vekm"]
 [ext_resource type="PackedScene" uid="uid://bvk3gnpxothx" path="res://player.tscn" id="4_sb48q"]
 [ext_resource type="Texture2D" uid="uid://c8wy6uaftugjb" path="res://mtns.png" id="4_yx171"]
-[ext_resource type="Script" path="res://player.gd" id="5_r0x5m"]
-[ext_resource type="PackedScene" uid="uid://v87ab5ei0rot" path="res://world_bound.tscn" id="5_t88pq"]
+[ext_resource type="Script" uid="uid://cxf1618ho4vex" path="res://player.gd" id="5_r0x5m"]
+[ext_resource type="PackedScene" uid="uid://brn0tsp4uvxqs" path="res://world_bound.tscn" id="5_t88pq"]
 [ext_resource type="Texture2D" uid="uid://cigbovtxus6mp" path="res://ground.png" id="7_yx171"]
 [ext_resource type="Texture2D" uid="uid://bqtpnkappgmp4" path="res://back_mtns.png" id="8_yhmtn"]
 [ext_resource type="Script" uid="uid://vi717v7277gc" path="res://stairs.gd" id="11_yhmtn"]
@@ -425,6 +425,9 @@ offset_right = 246.0
 offset_bottom = 1010.0
 texture = ExtResource("12_gwjdr")
 expand_mode = 1
+
+[node name="left_wall_test" type="StaticBody2D" parent="." unique_id=376323761]
+position = Vector2(-75, 1157)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EndGame" to="." method="_on_end_game_pressed"]
 

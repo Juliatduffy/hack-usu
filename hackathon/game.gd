@@ -40,6 +40,15 @@ func _process(delta: float) -> void:
 
 	_uv_offset_y = fmod(_uv_offset_y + _uv_speed * delta, 1.0)
 	(bg.material as ShaderMaterial).set_shader_parameter("y_offset", _uv_offset_y)
+	
+	if get_node("CharacterBody2D/normal").global_position.x < get_node("left_wall_test").global_position.x:
+		get_tree().change_scene_to_file("res://End.tscn")
+		
+	if get_node("CharacterBody2D/Camera2D").limit_left < get_node("left_wall_test").global_position.x:
+		get_node("CharacterBody2D/Camera2D").limit_left = int(get_node("left_wall_test").global_position.x)
+		
+	if get_node("CharacterBody2D/Camera2D").limit_bottom < get_node("floor").global_position.y + 1000:
+		get_node("CharacterBody2D/Camera2D").limit_bottom = int(get_node("floor").global_position.y)
 
 #func _on_end_game_pressed() -> void:
 	#get_tree().change_scene_to_file("res://End.tscn")
